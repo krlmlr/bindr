@@ -38,7 +38,7 @@ devtools::install_github("krlmlr/bindr")
 
 For illustration, the `append_random()` function is used,
 which appends a separator (a dash by default) and a random letter
-to its input.
+to its input, and talks about it, too.
 
 ```{r}
 set.seed(20161510)

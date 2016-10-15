@@ -12,3 +12,5 @@ URLNote: https://github.com/krlmlr/
 BugReports: https://github.com/krlmlr/
 URL: http://krlmlr.github.io/
 Suggests: testthat
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 5.0.1.9000

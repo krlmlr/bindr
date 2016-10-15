@@ -1,9 +1,26 @@
+#' Create or populate an environment with parametrized active bindings
+#'
+#' Leverages [base::makeActiveBindings] by allowing parametrized functions
+#' that take the name of the binding and an arbitrary number of additional arguments.
+#'
+#' @param names A [name], or a list of names
+#' @param fun A [function] with at least one argument, which will be called
+#'   to compute the value of a binding.  The function will be called with the
+#'   binding name as first argument (unnamed), and `...` as additional arguments
+#' @param ... Additional arguments to `fun`
+#' @param .envir The [environment] in which `fun` will be executed,
+#'   important if `fun` calls other functions that are not globally visible
+#' @param .enclos The enclosing environment (`parent.env`) for the newly created environment
+#' @export
 create_env <- function(names, fun, ..., .envir = parent.frame(), .enclos = parent.frame()) {
   env <- new.env(parent = .enclos, size = length(names))
   populate_env(env = env, names = names, fun = fun, ..., .envir = .envir)
   env
 }
 
+#' @param env An [environment]
+#' @rdname create_env
+#' @export
 populate_env <- function(env, names, fun, ..., .envir = parent.frame()) {
   if (!all(vapply(names, is.name, logical(1L)))) {
     stop("Expecting a list of names", call. = FALSE)

@@ -11,3 +11,4 @@ Date: 2016-10-15
 URLNote: https://github.com/krlmlr/
 BugReports: https://github.com/krlmlr/
 URL: http://krlmlr.github.io/
+Suggests: testthat

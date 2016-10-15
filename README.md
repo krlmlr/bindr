@@ -81,7 +81,8 @@ The bindings by default have access to the calling environment:
 
 ``` r
 create_local_env <- function(names) {
-  binder <- function(name, append) paste(name, append, sep = "-")
+  paste_with_dash <- function(...) paste(..., sep = "-")
+  binder <- function(name, append) paste_with_dash(name, append)
   create_env(names, binder, append = "appending")
 }
 

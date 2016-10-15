@@ -30,4 +30,13 @@ important if \code{fun} calls other functions that are not globally visible}
 Leverages \link[base:makeActiveBindings]{base::makeActiveBindings} by allowing parametrized functions
 that take the name of the binding and an arbitrary number of additional arguments.
 }
+\examples{
+env <- create_env(lapply(letters, as.name), paste0, "-lowercase")
+env$a
+env$c
+env$Z
+populate_env(env, lapply(LETTERS, as.name), paste0, "-uppercase")
+env$a
+env$Z
+}
 

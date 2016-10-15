@@ -12,6 +12,15 @@
 #'   important if `fun` calls other functions that are not globally visible
 #' @param .enclos The enclosing environment (`parent.env`) for the newly created environment
 #' @export
+#'
+#' @examples
+#' env <- create_env(lapply(letters, as.name), paste0, "-lowercase")
+#' env$a
+#' env$c
+#' env$Z
+#' populate_env(env, lapply(LETTERS, as.name), paste0, "-uppercase")
+#' env$a
+#' env$Z
 create_env <- function(names, fun, ..., .envir = parent.frame(), .enclos = parent.frame()) {
   env <- new.env(parent = .enclos, size = length(names))
   populate_env(env = env, names = names, fun = fun, ..., .envir = .envir)

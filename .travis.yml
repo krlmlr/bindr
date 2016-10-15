@@ -30,5 +30,4 @@ notifications:
     on_failure: change
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
   - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi

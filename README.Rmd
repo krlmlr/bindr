@@ -118,7 +118,7 @@ possibly with `rng = false` if performance matters.
 The following C++ module exports a function `change_case(to_upper = FALSE)`,
 which is bound against in R code later.
 
-```{Rcpp}
+```{Rcpp cpp-mod, cache = TRUE}
 #include <Rcpp.h>
 
 #include <algorithm>

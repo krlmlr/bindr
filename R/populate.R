@@ -46,11 +46,11 @@ populate_env <- function(env, names, fun, ..., .envir = parent.frame()) {
 
 check_names <- function(names) {
   if (is.character(names)) {
-    enc_names <- enc2native(names)
+    enc_names <- to_symbol_encoding(names)
     diff <- names != enc_names
     if (any(diff)) {
       warning("Mangling the following names: ",
-              paste(names[diff], " -> ", enc_names[diff], collapse = ", "),
+              paste0(names[diff], " -> ", enc_names[diff], collapse = ", "),
               ". Use enc2native() to avoid the warning.", call. = FALSE)
     }
     lapply(enc_names, as.name)
@@ -60,6 +60,8 @@ check_names <- function(names) {
     stop("Expecting a list of names or a character vector", call. = FALSE)
   }
 }
+
+to_symbol_encoding <- function(x) enc2native(x)
 
 make_make_active_binding_fun <- function(.envir) {
   make_active_binding_fun <- function(name, fun, ...) {

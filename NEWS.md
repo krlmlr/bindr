@@ -1,3 +1,9 @@
+## bindr 0.0-3 (2016-10-15)
+
+- Not overwriting existing bindings or variables.
+- Improve documentation.
+
+
 ## bindr 0.0-2 (2016-10-15)
 
 - Names can be passed as character strings, with warning if the conversion fails.

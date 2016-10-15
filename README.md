@@ -3,7 +3,7 @@
 bindr [![Travis-CI Build Status](https://travis-ci.org/krlmlr/bindr.svg?branch=master)](https://travis-ci.org/krlmlr/bindr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/bindr?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/bindr) [![Coverage Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://codecov.io/github/krlmlr/bindr?branch=master)
 ========================================================================================================================================================================================================================================================================================================================================================================================================================================
 
-Active bindings in R are much like properties in other languages: They look like a variable, but querying or setting the value triggers a function call. They can be created in R via [`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv), but with this API the function used to compute the value of a binding cannot take additional arguments. The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name, and an arbitrary number of additional arguments.
+Active bindings in R are much like properties in other languages: They look like a variable, but querying or setting the value triggers a function call. They can be created in R via [`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv), but with this API the function used to compute or change the value of a binding cannot take additional arguments. The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name, and an arbitrary number of additional arguments.
 
 Installation
 ------------
@@ -29,6 +29,9 @@ append_random <- function(x, sep = "-") {
 
 library(bindr)
 env <- create_env(letters, append_random)
+ls(env)
+#>  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q"
+#> [18] "r" "s" "t" "u" "v" "w" "x" "y" "z"
 env$a
 #> Evaluating append_random(sep = "-")
 #> [1] "a-k"
@@ -67,18 +70,22 @@ create_env("binding", paste, "value", sep = "-")$binding
 A parent environment can be specified for creation:
 
 ``` r
-env2 <- create_env("a", identity, .envir = env)
+env2 <- create_env("a", identity, .enclos = env)
 env2$a
 #> a
 env2$b
 #> NULL
+get("b", env2)
+#> Evaluating append_random(sep = "-")
+#> [1] "b-z"
 ```
 
 The bindings by default have access to the calling environment:
 
 ``` r
 create_local_env <- function(names) {
-  binder <- function(name, append) paste(name, append, sep = "-")
+  paste_with_dash <- function(...) paste(..., sep = "-")
+  binder <- function(name, append) paste_with_dash(name, append)
   create_env(names, binder, append = "appending")
 }
 
@@ -94,6 +101,17 @@ env3$a <- NA
 #> Error: Binding is read-only.
 env3$a <- NULL
 #> Error: Binding is read-only.
+```
+
+Existing variables or bindings are not overwritten:
+
+``` r
+env4 <- as.environment(list(a = 5))
+populate_env(env4, quote(b), identity)
+ls(env4)
+#> [1] "a" "b"
+populate_env(env4, letters, identity)
+#> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: a, b
 ```
 
 Because active bindings must be R functions, a native C++ interface is not very useful. Instead, use an exported Rcpp function, possibly with `rng = false` if performance matters. The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
@@ -127,3 +145,8 @@ env$`__ToLower__`
 get("__tOuPPER__", env)
 #> [1] "__TOUPPER__"
 ```
+
+License
+-------
+
+MIT (c) 2016 Kirill Müller.

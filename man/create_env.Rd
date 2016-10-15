@@ -11,7 +11,8 @@ create_env(names, fun, ..., .envir = parent.frame(),
 populate_env(env, names, fun, ..., .envir = parent.frame())
 }
 \arguments{
-\item{names}{A \link{name}, or a list of names}
+\item{names}{A \link{name}, or a list of names, or a character vector; in the latter case
+the names are mangled if they are not representable in the native encoding}
 
 \item{fun}{A \link{function} with at least one argument, which will be called
 to compute the value of a binding.  The function will be called with the
@@ -31,11 +32,11 @@ Leverages \link[base:makeActiveBindings]{base::makeActiveBindings} by allowing p
 that take the name of the binding and an arbitrary number of additional arguments.
 }
 \examples{
-env <- create_env(lapply(letters, as.name), paste0, "-lowercase")
+env <- create_env(letters, paste0, "-lowercase")
 env$a
 env$c
 env$Z
-populate_env(env, lapply(LETTERS, as.name), paste0, "-uppercase")
+populate_env(env, LETTERS, paste0, "-uppercase")
 env$a
 env$Z
 }

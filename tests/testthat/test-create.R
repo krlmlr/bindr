@@ -9,6 +9,15 @@ test_that("create_env()", {
   expect_error(env$a <- "a", "read-only")
 })
 
+test_that("create_env() with character", {
+  env <- create_env(letters, toupper)
+  expect_equal(env$a, "A")
+  expect_equal(env$x, "X")
+  expect_null(env$X)
+  expect_equal(length(ls(env)), length(letters))
+  expect_error(env$a <- "a", "read-only")
+})
+
 test_that("create_env() with inheritance", {
   env <- create_env(lapply(letters, as.name), toupper)
   env2 <- create_env(lapply(LETTERS, as.name), tolower, .enclos = env)

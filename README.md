@@ -18,7 +18,7 @@ devtools::install_github("krlmlr/bindr")
 Example
 -------
 
-In this example, we create an environment that contains bindings for all lowercase letters; this bindings evaluate to the letter with a dash and a random letter appended.
+For illustration, the `append_random()` function is used, which appends a separator (a dash by default) and a random letter to its input.
 
 ``` r
 set.seed(20161510)
@@ -27,6 +27,17 @@ append_random <- function(x, sep = "-") {
   paste(x, sample(letters, 1), sep = sep)
 }
 
+append_random("a")
+#> Evaluating append_random(sep = "-")
+#> [1] "a-k"
+append_random("X", sep = "+")
+#> Evaluating append_random(sep = "+")
+#> [1] "X+u"
+```
+
+In this example, we create an environment that contains bindings for all lowercase letters, which are evaluated with `append_random()`. As a result, a dash and a random letter are appended to the name of the binding:
+
+``` r
 library(bindr)
 env <- create_env(letters, append_random)
 ls(env)
@@ -34,16 +45,16 @@ ls(env)
 #> [18] "r" "s" "t" "u" "v" "w" "x" "y" "z"
 env$a
 #> Evaluating append_random(sep = "-")
-#> [1] "a-k"
-env$a
-#> Evaluating append_random(sep = "-")
-#> [1] "a-u"
-env$a
-#> Evaluating append_random(sep = "-")
 #> [1] "a-p"
+env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-j"
+env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-b"
 env$c
 #> Evaluating append_random(sep = "-")
-#> [1] "c-j"
+#> [1] "c-b"
 env$Z
 #> NULL
 ```
@@ -54,10 +65,10 @@ Bindings can also be added to existing environments:
 populate_env(env, LETTERS, append_random, "+")
 env$a
 #> Evaluating append_random(sep = "-")
-#> [1] "a-b"
+#> [1] "a-z"
 env$Z
 #> Evaluating append_random(sep = "+")
-#> [1] "Z+b"
+#> [1] "Z+j"
 ```
 
 Both named and unnamed arguments are supported:
@@ -77,7 +88,7 @@ env2$b
 #> NULL
 get("b", env2)
 #> Evaluating append_random(sep = "-")
-#> [1] "b-z"
+#> [1] "b-m"
 ```
 
 The bindings by default have access to the calling environment:

@@ -1,6 +1,7 @@
 #' Create or populate an environment with parametrized active bindings
 #'
-#' Leverages [base::makeActiveBindings] by allowing parametrized functions
+#' Leverages [makeActiveBinding()][base::bindenv]
+#' by allowing parametrized functions
 #' that take the name of the binding and an arbitrary number of additional arguments.
 #'
 #' @param names A [name], or a list of names, or a character vector; in the latter case

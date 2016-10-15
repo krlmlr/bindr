@@ -28,7 +28,8 @@ important if \code{fun} calls other functions that are not globally visible}
 \item{env}{An \link{environment}}
 }
 \description{
-Leverages \link[base:makeActiveBindings]{base::makeActiveBindings} by allowing parametrized functions
+Leverages \link[base:bindenv]{makeActiveBinding()}
+by allowing parametrized functions
 that take the name of the binding and an arbitrary number of additional arguments.
 }
 \examples{

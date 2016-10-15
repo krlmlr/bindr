@@ -1,6 +1,6 @@
 Package: bindr
 Title: What the Package Does (one line, title case)
-Version: 0.0-1
+Version: 0.0-2
 Authors@R: person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
 Description: What the package does (one paragraph).
 Depends: R (>= 3.3.1)

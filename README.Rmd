@@ -49,6 +49,7 @@ append_random <- function(x, sep = "-") {
 
 library(bindr)
 env <- create_env(letters, append_random)
+ls(env)
 env$a
 env$a
 env$a

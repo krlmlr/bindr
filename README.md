@@ -29,6 +29,9 @@ append_random <- function(x, sep = "-") {
 
 library(bindr)
 env <- create_env(letters, append_random)
+ls(env)
+#>  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q"
+#> [18] "r" "s" "t" "u" "v" "w" "x" "y" "z"
 env$a
 #> Evaluating append_random(sep = "-")
 #> [1] "a-k"

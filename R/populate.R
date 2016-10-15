@@ -9,22 +9,27 @@ populate_env <- function(env, names, fun, ..., .envir = parent.frame()) {
     stop("Expecting a list of names", call. = FALSE)
   }
 
+  make_active_binding_fun <- make_make_active_binding_fun(.envir)
+
   lapply(names, function(name) {
-    makeActiveBinding(name, new_active_binding_fun(name, fun, ..., .envir = .envir), env)
+    makeActiveBinding(name, make_active_binding_fun(name, fun, ...), env)
   })
 
   invisible(env)
 }
 
-new_active_binding_fun <- function(name, fun, ..., .envir) {
-  force(name)
-  list(...)
-  binding_fun <- function(value) {
-    if (!missing(value)) {
-      stop("Binding is read-only.", call. = FALSE)
+make_make_active_binding_fun <- function(.envir) {
+  make_active_binding_fun <- function(name, fun, ...) {
+    force(name)
+    list(...)
+    function(value) {
+      if (!missing(value)) {
+        stop("Binding is read-only.", call. = FALSE)
+      }
+      fun(name, ...)
     }
-    fun(name, ...)
   }
-  environment(binding_fun) <- envir
-  binding_fun
+
+  environment(make_active_binding_fun) <- .envir
+  make_active_binding_fun
 }

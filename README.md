@@ -131,3 +131,8 @@ env$`__ToLower__`
 get("__tOuPPER__", env)
 #> [1] "__TOUPPER__"
 ```
+
+License
+-------
+
+MIT (c) 2016 Kirill Müller.

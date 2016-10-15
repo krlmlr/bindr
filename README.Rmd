@@ -125,10 +125,14 @@ SEXP change_case(Symbol name, bool to_upper = false) {
 
 Binding from R:
 
-```{r example}
+```{r}
 env <- create_env(as.name("__ToLower__"), change_case)
 populate_env(env, as.name("__tOuPPER__"), change_case, TRUE)
 ls(env)
 env$`__ToLower__`
 get("__tOuPPER__", env)
 ```
+
+## License
+
+MIT (c) 2016 Kirill Müller.

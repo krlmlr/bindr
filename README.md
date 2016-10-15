@@ -100,6 +100,17 @@ env3$a <- NULL
 #> Error: Binding is read-only.
 ```
 
+Existing variables or bindings are not overwritten:
+
+``` r
+env4 <- as.environment(list(a = 5))
+populate_env(env4, quote(b), identity)
+ls(env4)
+#> [1] "a" "b"
+populate_env(env4, letters, identity)
+#> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: a, b
+```
+
 Because active bindings must be R functions, a native C++ interface is not very useful. Instead, use an exported Rcpp function, possibly with `rng = false` if performance matters. The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
 
 ``` cpp

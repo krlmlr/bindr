@@ -99,6 +99,17 @@ env3$a <- NA
 env3$a <- NULL
 ```
 
+
+Existing variables or bindings are not overwritten:
+
+```{r overwrite, error=TRUE}
+env4 <- as.environment(list(a = 5))
+populate_env(env4, quote(b), identity)
+ls(env4)
+populate_env(env4, letters, identity)
+```
+
+
 Because active bindings must be R functions,
 a native C++ interface is not very useful.
 Instead, use an exported Rcpp function,

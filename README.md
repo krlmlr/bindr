@@ -8,7 +8,7 @@ Active bindings can be created in R via [`makeActiveBinding()`](https://www.rdoc
 Installation
 ------------
 
-You can install bindr from github with:
+You can install `bindr` from GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -55,13 +55,13 @@ The bindings by default have access to the calling environment:
 
 ``` r
 create_local_env <- function(names) {
-  binder <- function(name, append) paste0(name, append, sep = "-")
+  binder <- function(name, append) paste(name, append, sep = "-")
   create_env(names, binder, append = "appending")
 }
 
 env3 <- create_local_env("a")
 env3$a
-#> [1] "aappending-"
+#> [1] "a-appending"
 ```
 
 All bindings are read-only:

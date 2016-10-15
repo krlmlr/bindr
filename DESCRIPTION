@@ -1,8 +1,9 @@
 Package: bindr
-Title: What the Package Does (one line, title case)
+Title: Parametrized Active Bindings
 Version: 0.0-2
 Authors@R: person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org")
-Description: What the package does (one paragraph).
+Description: Provides a simple interface for creating active bindings where the
+    bound function accepts additional arguments.
 Depends: R (>= 3.3.1)
 License: GPL-3
 Encoding: UTF-8

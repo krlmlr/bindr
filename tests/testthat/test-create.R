@@ -23,3 +23,15 @@ test_that("create_env() with inheritance", {
   expect_error(env2$a <- "a", NA)
   expect_equal(get("a", env2), "a")
 })
+
+test_that("create_env() with local function", {
+  a <- function(x) b(x)
+  b <- function(x) c(x)
+  c <- function(x) toupper(x)
+  env <- create_env(lapply(letters, as.name), a)
+  expect_equal(env$a, "A")
+  expect_equal(env$x, "X")
+  expect_null(env$X)
+  expect_equal(length(ls(env)), length(letters))
+  expect_error(env$a <- "a", "read-only")
+})

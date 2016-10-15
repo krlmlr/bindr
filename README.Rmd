@@ -15,10 +15,13 @@ knitr::opts_chunk$set(
 # bindr [![Travis-CI Build Status](https://travis-ci.org/krlmlr/bindr.svg?branch=master)](https://travis-ci.org/krlmlr/bindr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/bindr?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/bindr) [![Coverage Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://codecov.io/github/krlmlr/bindr?branch=master)
 
 
-Active bindings can be created in R via
+Active bindings in R are much like properties in other languages:
+They look like a variable,
+but querying or setting the value triggers a function call.
+They can be created in R via
 [`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv),
-but the function used to compute the value of a binding cannot take additional arguments.
-This package faciliates the creation of active bindings that are linked to a function that receives the binding name,
+but with this API the function used to compute the value of a binding cannot take additional arguments.
+The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name,
 and an arbitrary number of additional arguments.
 
 
@@ -35,11 +38,19 @@ devtools::install_github("krlmlr/bindr")
 
 In this example, we create an environment that contains bindings
 for all lowercase letters; this bindings evaluate to the letter
-with `"-lowercase"` appended.
+with a dash and a random letter appended.
 
 ```{r}
+set.seed(20161510)
+append_random <- function(x, sep = "-") {
+  message("Evaluating append_random(sep = ", deparse(sep), ")")
+  paste(x, sample(letters, 1), sep = sep)
+}
+
 library(bindr)
-env <- create_env(letters, paste0, "-lowercase")
+env <- create_env(letters, append_random)
+env$a
+env$a
 env$a
 env$c
 env$Z
@@ -48,17 +59,23 @@ env$Z
 Bindings can also be added to existing environments:
 
 ```{r}
-populate_env(env, LETTERS, paste0, "-uppercase")
+populate_env(env, LETTERS, append_random, "+")
 env$a
 env$Z
+```
+
+Both named and unnamed arguments are supported:
+
+```{r}
+create_env("binding", paste, "value", sep = "-")$binding
 ```
 
 A parent environment can be specified for creation:
 
 ```{r}
-env2 <- create_env("a", identity, .enclos = env)
-env$a
-env$b
+env2 <- create_env("a", identity, .envir = env)
+env2$a
+env2$b
 ```
 
 The bindings by default have access to the calling environment:

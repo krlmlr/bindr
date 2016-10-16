@@ -15,8 +15,8 @@ You can install `bindr` from GitHub with:
 devtools::install_github("krlmlr/bindr")
 ```
 
-Example
--------
+Getting started
+---------------
 
 For illustration, the `append_random()` function is used. This function appends a separator (a dash by default) and a random letter to its input, and talks about it, too.
 
@@ -71,6 +71,9 @@ env$Z
 #> [1] "Z+j"
 ```
 
+Further properties
+------------------
+
 Both named and unnamed arguments are supported:
 
 ``` r
@@ -124,6 +127,9 @@ ls(env4)
 populate_env(env4, letters, identity)
 #> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: a, b
 ```
+
+Active bindings and C++
+-----------------------
 
 Because active bindings must be R functions, a native C++ interface is not very useful. Instead, use an exported Rcpp function, possibly with `rng = false` if performance matters. The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
 

@@ -131,7 +131,9 @@ populate_env(env4, letters, identity)
 Active bindings and C++
 -----------------------
 
-Because active bindings must be R functions, a native C++ interface is not very useful. Instead, use an exported Rcpp function, possibly with `rng = false` if performance matters. The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
+Active bindings must be R functions. To interface with C++ code, one must bind against an exported Rcpp function, possibly with `rng = false` if performance matters. The [`bindrcpp`](https://github.com/krlmlr/bindrcpp#readme) package uses `bindr` to provide an easy-to-use C++ interface for parametrized active bindings, and is the recommended way to interface with C++ code. In the remainder of this section, an alternative using an exported C++ function is shown.
+
+The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
 
 ``` cpp
 #include <Rcpp.h>

@@ -1,6 +1,6 @@
 Package: bindr
 Title: Parametrized Active Bindings
-Version: 0.0-3
+Version: 0.0-4
 Authors@R: c(
     person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org"),
     person("RStudio", role = "cph")
@@ -9,7 +9,7 @@ Description: Provides a simple interface for creating active bindings where the
     bound function accepts additional arguments.
 Suggests: testthat
 LazyData: true
-Date: 2016-10-15
+Date: 2016-11-09
 BugReports: https://github.com/krlmlr/bindr/issues
 URL: https://github.com/krlmlr/bindr
 Roxygen: list(markdown = TRUE)

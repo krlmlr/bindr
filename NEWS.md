@@ -1,3 +1,9 @@
+## bindr 0.0-4 (2016-11-09)
+
+- Change copyright.
+- Build web site with `pkgdown`.
+
+
 ## bindr 0.0-3 (2016-10-15)
 
 - Not overwriting existing bindings or variables.

@@ -1,33 +1,68 @@
-language: r
-cache: packages
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
+# Header
+language: r
+sudo: false
+cache: packages
+warnings_are_errors: true
+
+#env
+env:
+  global:
+  - _R_CHECK_FORCE_SUGGESTS_=false
+  - MAKEFLAGS="-j 2"
+
+#addons
+addons:
+  apt:
+    packages:
+    - libmagick++-dev
+    - libssh2-1-dev
+
+#matrix: 3x Linux, 1x OS X
 matrix:
   include:
-    - os: linux
-      dist: precise
-      sudo: false
-      env:
-        - R_CODECOV=true
-        - MAKEFLAGS="-j 2"
-      addons:
-        apt:
-          packages:
-            - libv8-dev
-            - libssh2-1-dev
-    - os: osx
-      osx_image: xcode7.2
-      latex: false
-      env:
-        - R_CODECOV=true
-        - MAKEFLAGS="-j 2"
+  - r: release
+    env:
+    - BUILD_PKGDOWN=true
+  - r: oldrel
+  - r: devel
+  - os: osx
+    osx_image: xcode7.2
+    r: release
+    latex: false
 
-warnings_are_errors: true
-#r_check_revdep: true
-
+#notifications
 notifications:
   email:
     on_success: change
     on_failure: change
 
+#before_script
+before_script:
+- R -q -e 'devtools::install_github("ropenscilabs/tic"); tic::before_script()'
+
+#after_success (deploy to gh-pages)
 after_success:
-  - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
+- R -q -e 'tic::after_success()'
+
+#deploy // https://github.com/travis-ci/travis-build/blob/85ef7108/lib/travis/build/addons/deploy/script.rb#L100-L107
+deploy:
+  provider: script
+  script: R -q -e 'tic::deploy()'
+  on:
+    all_branches: true
+
+# Custom parts:
+
+#r_github_packages
+r_github_packages:
+
+#r_packages
+r_packages:
+
+#services
+services:
+
+#before_install
+before_install:

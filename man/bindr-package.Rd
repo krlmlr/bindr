@@ -4,7 +4,7 @@
 \name{bindr-package}
 \alias{bindr}
 \alias{bindr-package}
-\title{Parametrized Active Bindings}
+\title{bindr: Parametrized Active Bindings}
 \description{
 Provides a simple interface for creating active bindings where the
 bound function accepts additional arguments.
@@ -12,5 +12,22 @@ bound function accepts additional arguments.
 \details{
 See \code{\link[=create_env]{create_env()}} for creating an environment populated with active bindings,
 and \code{\link[=populate_env]{populate_env()}} for populating an existing environment.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/krlmlr/bindr}
+  \item Report bugs at \url{https://github.com/krlmlr/bindr/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
+
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder]
+}
+
 }
 

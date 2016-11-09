@@ -15,10 +15,10 @@ You can install `bindr` from GitHub with:
 devtools::install_github("krlmlr/bindr")
 ```
 
-Example
--------
+Getting started
+---------------
 
-In this example, we create an environment that contains bindings for all lowercase letters; this bindings evaluate to the letter with a dash and a random letter appended.
+For illustration, the `append_random()` function is used. This function appends a separator (a dash by default) and a random letter to its input, and talks about it, too.
 
 ``` r
 set.seed(20161510)
@@ -27,6 +27,17 @@ append_random <- function(x, sep = "-") {
   paste(x, sample(letters, 1), sep = sep)
 }
 
+append_random("a")
+#> Evaluating append_random(sep = "-")
+#> [1] "a-k"
+append_random("X", sep = "+")
+#> Evaluating append_random(sep = "+")
+#> [1] "X+u"
+```
+
+In this example, we create an environment that contains bindings for all lowercase letters, which are evaluated with `append_random()`. As a result, a dash and a random letter are appended to the name of the binding:
+
+``` r
 library(bindr)
 env <- create_env(letters, append_random)
 ls(env)
@@ -34,16 +45,16 @@ ls(env)
 #> [18] "r" "s" "t" "u" "v" "w" "x" "y" "z"
 env$a
 #> Evaluating append_random(sep = "-")
-#> [1] "a-k"
-env$a
-#> Evaluating append_random(sep = "-")
-#> [1] "a-u"
-env$a
-#> Evaluating append_random(sep = "-")
 #> [1] "a-p"
+env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-j"
+env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-b"
 env$c
 #> Evaluating append_random(sep = "-")
-#> [1] "c-j"
+#> [1] "c-b"
 env$Z
 #> NULL
 ```
@@ -54,11 +65,14 @@ Bindings can also be added to existing environments:
 populate_env(env, LETTERS, append_random, "+")
 env$a
 #> Evaluating append_random(sep = "-")
-#> [1] "a-b"
+#> [1] "a-z"
 env$Z
 #> Evaluating append_random(sep = "+")
-#> [1] "Z+b"
+#> [1] "Z+j"
 ```
+
+Further properties
+------------------
 
 Both named and unnamed arguments are supported:
 
@@ -77,7 +91,7 @@ env2$b
 #> NULL
 get("b", env2)
 #> Evaluating append_random(sep = "-")
-#> [1] "b-z"
+#> [1] "b-m"
 ```
 
 The bindings by default have access to the calling environment:
@@ -114,7 +128,12 @@ populate_env(env4, letters, identity)
 #> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: a, b
 ```
 
-Because active bindings must be R functions, a native C++ interface is not very useful. Instead, use an exported Rcpp function, possibly with `rng = false` if performance matters. The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
+Active bindings and C++
+-----------------------
+
+Active bindings must be R functions. To interface with C++ code, one must bind against an exported Rcpp function, possibly with `rng = false` if performance matters. The [`bindrcpp`](https://github.com/krlmlr/bindrcpp#readme) package uses `bindr` to provide an easy-to-use C++ interface for parametrized active bindings, and is the recommended way to interface with C++ code. In the remainder of this section, an alternative using an exported C++ function is shown.
+
+The following C++ module exports a function `change_case(to_upper = FALSE)`, which is bound against in R code later.
 
 ``` cpp
 #include <Rcpp.h>

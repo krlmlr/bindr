@@ -6,3 +6,4 @@
 ^README-.*\.png$
 ^codecov\.yml$
 ^README_cache$
+^tic\.R$

@@ -25,7 +25,7 @@ important if \code{fun} calls other functions that are not globally visible}
 
 \item{.enclos}{The enclosing environment (\code{parent.env}) for the newly created environment}
 
-\item{env}{An \link{environment}}
+\item{env}{An environment}
 }
 \description{
 Leverages \link[base:bindenv]{makeActiveBinding()}

@@ -163,7 +163,3 @@ ls(env)
 env$`__ToLower__`
 get("__tOuPPER__", env)
 ```
-
-## License
-
-MIT (c) 2016 Kirill Müller.

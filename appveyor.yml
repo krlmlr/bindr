@@ -15,6 +15,22 @@ cache:
 
 # Adapt as necessary starting from here
 
+matrix:
+- R_VERSION: devel
+
+- R_VERSION: release
+  R_ARCH: x64
+
+- R_VERSION: stable
+
+- R_VERSION: patched
+
+- R_VERSION: oldrel
+
+- R_VERSION: 3.0.0
+  RTOOLS_VERSION: 32
+  CRAN: http://cran.rstudio.com
+
 build_script:
   - travis-tool.sh install_deps
 

@@ -7,6 +7,7 @@ Authors@R: c(
     )
 Description: Provides a simple interface for creating active bindings where the
     bound function accepts additional arguments.
+Depends: R (>= 3.0.0)
 Suggests: testthat
 LazyData: true
 Date: 2016-11-11

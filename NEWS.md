@@ -1,3 +1,9 @@
+## bindr 0.0-6 (2016-11-11)
+
+- Test payload.
+- Prepare CRAN release.
+
+
 ## bindr 0.0-5 (2016-11-11)
 
 - Minor documentation updates.

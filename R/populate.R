@@ -29,7 +29,7 @@ create_env <- function(names, fun, ..., .envir = parent.frame(), .enclos = paren
   env
 }
 
-#' @param env An [environment]
+#' @param env An environment
 #' @rdname create_env
 #' @export
 populate_env <- function(env, names, fun, ..., .envir = parent.frame()) {

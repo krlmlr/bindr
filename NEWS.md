@@ -1,37 +1,8 @@
-## bindr 0.0-6 (2016-11-11)
+# bindr 0.1 (2016-11-12)
 
-- Test payload.
-- Prepare CRAN release.
+Initial release.
 
-
-## bindr 0.0-5 (2016-11-11)
-
-- Minor documentation updates.
-
-
-## bindr 0.0-4 (2016-11-09)
-
-- Change copyright.
-- Build web site with `pkgdown`.
-
-
-## bindr 0.0-3 (2016-10-15)
-
-- Not overwriting existing bindings or variables.
-- Improve documentation.
-
-
-## bindr 0.0-2 (2016-10-15)
-
-- Names can be passed as character strings, with warning if the conversion fails.
-- CI and full test coverage.
-- Enhanced `README`.
-
-
-## bindr 0.0-1 (2016-10-15)
-
-- Initial release
-- Functions `create_env()` and `populate_env()`, with documentation, examples, and tests.
-
-
-
+- Functions `create_env()` and `populate_env()`.
+    - Create or populate an environment with one or more active bindings, where the value is computed by calling a function and passing the name of the binding, and an arbitrary number of additional arguments (named or unnamed).
+    - Not overwriting existing bindings or variables.
+    - Names can be passed as symbols (`name`) or character strings (`character`), with warning if the conversion fails.

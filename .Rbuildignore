@@ -9,3 +9,4 @@
 ^tic\.R$
 ^_pkgdown\.yml$
 ^cran-comments\.md$
+^docs$

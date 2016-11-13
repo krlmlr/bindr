@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-bindr [![Travis-CI Build Status](https://travis-ci.org/krlmlr/bindr.svg?branch=master)](https://travis-ci.org/krlmlr/bindr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/bindr?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/bindr) [![Coverage Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://codecov.io/github/krlmlr/bindr?branch=master)
-========================================================================================================================================================================================================================================================================================================================================================================================================================================
+bindr [![Travis-CI Build Status](https://travis-ci.org/krlmlr/bindr.svg?branch=master)](https://travis-ci.org/krlmlr/bindr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/krlmlr/bindr?branch=master&svg=true)](https://ci.appveyor.com/project/krlmlr/bindr) [![Coverage Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://codecov.io/github/krlmlr/bindr?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bindr)](https://cran.r-project.org/package=bindr)
+======================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 
 Active bindings in R are much like properties in other languages: They look like a variable, but querying or setting the value triggers a function call. They can be created in R via [`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv), but with this API the function used to compute or change the value of a binding cannot take additional arguments. The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name, and an arbitrary number of additional arguments.
 
@@ -164,8 +164,3 @@ env$`__ToLower__`
 get("__tOuPPER__", env)
 #> [1] "__TOUPPER__"
 ```
-
-License
--------
-
-MIT (c) 2016 Kirill Müller.

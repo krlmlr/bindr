@@ -70,17 +70,14 @@ to_symbol_encoding <- function(x) enc2native(x)
 
 make_make_active_binding_fun <- function(.envir) {
   make_active_binding_fun <- function(name, fun, ...) {
+    force(name)
     force(fun)
-    extra <- list(...)
-    if (length(extra) == 0)
-      args <- list(name)
-    else
-      args <- c(list(name), extra)
+    list(...)
     function(value) {
       if (!missing(value)) {
         stop("Binding is read-only.", call. = FALSE)
       }
-      rlang::invoke(fun, args)
+      fun(name, ...)
     }
   }
 

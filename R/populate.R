@@ -35,9 +35,13 @@ create_env <- function(names, fun, ..., .envir = parent.frame(), .enclos = paren
 populate_env <- function(env, names, fun, ..., .envir = parent.frame()) {
   names <- check_names(names)
 
-  existing <- vapply(names, function(x) !is.null(env[[as.character(x)]]), logical(1L))
-  if (any(existing)) {
-    stop("Not creating bindings for existing variables: ", paste(names[existing], collapse = ", "))
+  existing <- as.list(env)
+  collisions <- fast_intersect(names, names(existing))
+  if (length(collisions) > 0) {
+    stop(
+      "Not creating bindings for existing variables: ",
+      paste(utils::head(collisions, 6), collapse = ", ")
+    )
   }
 
   make_active_binding_fun <- make_make_active_binding_fun(.envir)

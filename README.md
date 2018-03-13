@@ -121,11 +121,11 @@ Existing variables or bindings are not overwritten:
 
 ``` r
 env4 <- as.environment(list(a = 5))
-populate_env(env4, quote(b), identity)
+populate_env(env4, list(quote(b)), identity)
 ls(env4)
 #> [1] "a" "b"
 populate_env(env4, letters, identity)
-#> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: a, b
+#> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: b, a
 ```
 
 Active bindings and C++
@@ -155,8 +155,8 @@ SEXP change_case(Symbol name, bool to_upper = false) {
 Binding from R:
 
 ``` r
-env <- create_env(as.name("__ToLower__"), change_case)
-populate_env(env, as.name("__tOuPPER__"), change_case, TRUE)
+env <- create_env(list(as.name("__ToLower__")), change_case)
+populate_env(env, list(as.name("__tOuPPER__")), change_case, TRUE)
 ls(env)
 #> [1] "__ToLower__" "__tOuPPER__"
 env$`__ToLower__`

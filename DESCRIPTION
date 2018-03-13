@@ -2,7 +2,7 @@ Package: bindr
 Title: Parametrized Active Bindings
 Version: 0.1.1
 Authors@R: c(
-    person("Kirill", "M\u00fcller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org"),
+    person("Kirill", "M\u00fcller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org", comment = c(ORCID = "0000-0002-1416-3412")),
     person("RStudio", role = c("cph", "fnd"))
     )
 Description: Provides a simple interface for creating active bindings where the

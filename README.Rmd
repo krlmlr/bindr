@@ -120,7 +120,7 @@ Existing variables or bindings are not overwritten:
 
 ```{r overwrite, error=TRUE}
 env4 <- as.environment(list(a = 5))
-populate_env(env4, quote(b), identity)
+populate_env(env4, list(quote(b)), identity)
 ls(env4)
 populate_env(env4, letters, identity)
 ```
@@ -159,8 +159,8 @@ SEXP change_case(Symbol name, bool to_upper = false) {
 Binding from R:
 
 ```{r bind-cpp-from-r}
-env <- create_env(as.name("__ToLower__"), change_case)
-populate_env(env, as.name("__tOuPPER__"), change_case, TRUE)
+env <- create_env(list(as.name("__ToLower__")), change_case)
+populate_env(env, list(as.name("__tOuPPER__")), change_case, TRUE)
 ls(env)
 env$`__ToLower__`
 get("__tOuPPER__", env)

@@ -1,4 +1,4 @@
-### bindr 0.1.0.9000 (2018-02-05)
+## bindr 0.1.1 (2018-03-13)
 
 - Improve performance for very large environments for `create_env()` and `populate_env()`.
 - Force the `fun` argument just to be sure.

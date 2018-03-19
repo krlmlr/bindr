@@ -75,13 +75,13 @@ to_symbol_encoding <- function(x) enc2native(x)
 make_make_active_binding_fun <- function(.envir) {
   make_active_binding_fun <- function(name, fun, ...) {
     force(name)
-    force(fun)
+    bindr_fun <- fun
     list(...)
     function(value) {
       if (!missing(value)) {
         stop("Binding is read-only.", call. = FALSE)
       }
-      fun(name, ...)
+      bindr_fun(name, ...)
     }
   }
 

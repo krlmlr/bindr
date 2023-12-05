@@ -6,8 +6,7 @@
 \alias{bindr-package}
 \title{bindr: Parametrized Active Bindings}
 \description{
-Provides a simple interface for creating active bindings where the
-bound function accepts additional arguments.
+Provides a simple interface for creating active bindings where the bound function accepts additional arguments.
 }
 \details{
 See \code{\link[=create_env]{create_env()}} for creating an environment populated with active bindings,
@@ -23,11 +22,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
+\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org} (\href{https://orcid.org/0000-0002-1416-3412}{ORCID})
 
 Other contributors:
 \itemize{
-  \item RStudio [copyright holder]
+  \item RStudio [copyright holder, funder]
 }
 
 }

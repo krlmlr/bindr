@@ -5,8 +5,7 @@
 \alias{populate_env}
 \title{Create or populate an environment with parametrized active bindings}
 \usage{
-create_env(names, fun, ..., .envir = parent.frame(),
-  .enclos = parent.frame())
+create_env(names, fun, ..., .envir = parent.frame(), .enclos = parent.frame())
 
 populate_env(env, names, fun, ..., .envir = parent.frame())
 }

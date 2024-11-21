@@ -1,6 +1,6 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# bindr 0.1.1.9900 (2024-11-21)
+# bindr 0.1.2 (2024-11-21)
 
 ## Feature
 

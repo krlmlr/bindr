@@ -66,9 +66,10 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="bindr-travis-ci-build-status-appveyor-build-status-coverage-status-cran_status_badge">bindr <a href="https://app.travis-ci.com/krlmlr/bindr" class="external-link"><img src="https://app.travis-ci.com/krlmlr/bindr.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/krlmlr/bindr" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/krlmlr/bindr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://app.codecov.io/github/krlmlr/bindr?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg" alt="Coverage Status"></a> <a href="https://cran.r-project.org/package=bindr" class="external-link"><img src="http://www.r-pkg.org/badges/version/bindr" alt="CRAN_Status_Badge"></a>
-<a class="anchor" aria-label="anchor" href="#bindr-travis-ci-build-status-appveyor-build-status-coverage-status-cran_status_badge"></a>
+<div class="page-header"><h1 id="bindr">bindr<a class="anchor" aria-label="anchor" href="#bindr"></a>
 </h1></div>
+<!-- badges: start -->
+
 <p>Active bindings in R are much like properties in other languages: They look like a variable, but querying or setting the value triggers a function call. They can be created in R via <a href="https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv" class="external-link"><code>makeActiveBinding()</code></a>, but with this API the function used to compute or change the value of a binding cannot take additional arguments. The <code>bindr</code> package faciliates the creation of active bindings that are linked to a function that receives the binding name, and an arbitrary number of additional arguments.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -91,40 +92,66 @@
 <span></span>
 <span><span class="fu">append_random</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "a-k"</span></span>
+<span><span class="co">#&gt; [1] "a-h"</span></span>
 <span><span class="fu">append_random</span><span class="op">(</span><span class="st">"X"</span>, sep <span class="op">=</span> <span class="st">"+"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "+")</span></span>
-<span><span class="co">#&gt; [1] "X+u"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "X+k"</span></span></code></pre></div>
 <p>In this example, we create an environment that contains bindings for all lowercase letters, which are evaluated with <code>append_random()</code>. As a result, a dash and a random letter are appended to the name of the binding:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/krlmlr/bindr" class="external-link">bindr</a></span><span class="op">)</span></span>
 <span><span class="va">env</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_env.html">create_env</a></span><span class="op">(</span><span class="va">letters</span>, <span class="va">append_random</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls</a></span><span class="op">(</span><span class="va">env</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q"</span></span>
-<span><span class="co">#&gt; [18] "r" "s" "t" "u" "v" "w" "x" "y" "z"</span></span>
+<span><span class="co">#&gt;  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"</span></span>
+<span><span class="co">#&gt; [20] "t" "u" "v" "w" "x" "y" "z"</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">a</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "a-p"</span></span>
+<span><span class="co">#&gt; [1] "a-s"</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">a</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "a-j"</span></span>
+<span><span class="co">#&gt; [1] "a-h"</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">a</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "a-b"</span></span>
+<span><span class="co">#&gt; [1] "a-c"</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">c</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "c-b"</span></span>
+<span><span class="co">#&gt; [1] "c-o"</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">Z</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
 <p>Bindings can also be added to existing environments:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/create_env.html">populate_env</a></span><span class="op">(</span><span class="va">env</span>, <span class="va">LETTERS</span>, <span class="va">append_random</span>, <span class="st">"+"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
+<span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">a</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "a-z"</span></span>
+<span><span class="co">#&gt; [1] "a-q"</span></span>
 <span><span class="va">env</span><span class="op">$</span><span class="va">Z</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "+")</span></span>
-<span><span class="co">#&gt; [1] "Z+j"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Z+c"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="further-properties">Further properties<a class="anchor" aria-label="anchor" href="#further-properties"></a>
@@ -142,7 +169,7 @@
 <span><span class="co">#&gt; NULL</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/get.html" class="external-link">get</a></span><span class="op">(</span><span class="st">"b"</span>, <span class="va">env2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Evaluating append_random(sep = "-")</span></span>
-<span><span class="co">#&gt; [1] "b-m"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "b-t"</span></span></code></pre></div>
 <p>The bindings by default have access to the calling environment:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">create_local_env</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">names</span><span class="op">)</span> <span class="op">{</span></span>
@@ -237,7 +264,14 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/krlmlr/bindr/actions/workflows/rcc.yaml" class="external-link"><img src="https://github.com/krlmlr/bindr/actions/workflows/rcc.yaml/badge.svg" alt="rcc"></a></li>
+<li><a href="https://app.codecov.io/github/krlmlr/bindr?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=bindr" class="external-link"><img src="http://www.r-pkg.org/badges/version/bindr" alt="CRAN_Status_Badge"></a></li>
+</ul>
+</div>
 
   </div>
 </div>

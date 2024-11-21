@@ -1,37 +1,7 @@
----
-output:
-  github_document:
-    html_preview: false
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
-)
 
-pkgload::load_all()
-
-clean_output <- function(x, options) {
-  index <- x
-  index <- gsub("─", "-", index)
-  index <- strsplit(paste(index, collapse = "\n"), "\n---\n")[[1]][[2]]
-  writeLines(index, "index.md")
-
-  x <- fansi::strip_sgr(x)
-  x
-}
-
-options(cli.num_colors = 256)
-
-local({
-  hook_source <- knitr::knit_hooks$get("document")
-  knitr::knit_hooks$set(document = clean_output)
-})
-```
 
 # bindr 
 
@@ -56,7 +26,8 @@ and an arbitrary number of additional arguments.
 
 You can install `bindr` from GitHub with:
 
-```{r gh-installation, eval = FALSE}
+
+``` r
 # install.packages("devtools")
 devtools::install_github("krlmlr/bindr")
 ```
@@ -68,7 +39,8 @@ For illustration, the `append_random()` function is used.
 This function appends a separator (a dash by default) and a random letter
 to its input, and talks about it, too.
 
-```{r append-random}
+
+``` r
 set.seed(20161510)
 append_random <- function(x, sep = "-") {
   message("Evaluating append_random(sep = ", deparse(sep), ")")
@@ -76,30 +48,77 @@ append_random <- function(x, sep = "-") {
 }
 
 append_random("a")
+#> Evaluating append_random(sep = "-")
+#> [1] "a-h"
 append_random("X", sep = "+")
+#> Evaluating append_random(sep = "+")
+#> [1] "X+k"
 ```
 
 In this example, we create an environment that contains bindings
 for all lowercase letters, which are evaluated with `append_random()`.
 As a result, a dash and a random letter are appended to the name of the binding:
 
-```{r create}
+
+``` r
 library(bindr)
 env <- create_env(letters, append_random)
 ls(env)
+#>  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+#> [20] "t" "u" "v" "w" "x" "y" "z"
 env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-s"
 env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-h"
 env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-c"
 env$c
+#> Evaluating append_random(sep = "-")
+#> [1] "c-o"
 env$Z
+#> NULL
 ```
 
 Bindings can also be added to existing environments:
 
-```{r populate}
+
+``` r
 populate_env(env, LETTERS, append_random, "+")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
+#> Evaluating append_random(sep = "-")
 env$a
+#> Evaluating append_random(sep = "-")
+#> [1] "a-q"
 env$Z
+#> Evaluating append_random(sep = "+")
+#> [1] "Z+c"
 ```
 
 
@@ -107,22 +126,30 @@ env$Z
 
 Both named and unnamed arguments are supported:
 
-```{r named-unnamed}
+
+``` r
 create_env("binding", paste, "value", sep = "-")$binding
+#> [1] "binding-value"
 ```
 
 A parent environment can be specified for creation:
 
-```{r parent-env}
+
+``` r
 env2 <- create_env("a", identity, .enclos = env)
 env2$a
+#> a
 env2$b
+#> NULL
 get("b", env2)
+#> Evaluating append_random(sep = "-")
+#> [1] "b-t"
 ```
 
 The bindings by default have access to the calling environment:
 
-```{r env-access}
+
+``` r
 create_local_env <- function(names) {
   paste_with_dash <- function(...) paste(..., sep = "-")
   binder <- function(name, append) paste_with_dash(name, append)
@@ -131,23 +158,30 @@ create_local_env <- function(names) {
 
 env3 <- create_local_env("a")
 env3$a
+#> [1] "a-appending"
 ```
 
 All bindings are read-only:
 
-```{r failing, error=TRUE}
+
+``` r
 env3$a <- NA
+#> Error: Binding is read-only.
 env3$a <- NULL
+#> Error: Binding is read-only.
 ```
 
 
 Existing variables or bindings are not overwritten:
 
-```{r overwrite, error=TRUE}
+
+``` r
 env4 <- as.environment(list(a = 5))
 populate_env(env4, list(quote(b)), identity)
 ls(env4)
+#> [1] "a" "b"
 populate_env(env4, letters, identity)
+#> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: b, a
 ```
 
 
@@ -164,7 +198,8 @@ an alternative using an exported C++ function is shown.
 The following C++ module exports a function `change_case(to_upper = FALSE)`,
 which is bound against in R code later.
 
-```{Rcpp cpp-mod, cache = TRUE}
+
+``` cpp
 #include <Rcpp.h>
 
 #include <algorithm>
@@ -183,10 +218,14 @@ SEXP change_case(Symbol name, bool to_upper = false) {
 
 Binding from R:
 
-```{r bind-cpp-from-r}
+
+``` r
 env <- create_env(list(as.name("__ToLower__")), change_case)
 populate_env(env, list(as.name("__tOuPPER__")), change_case, TRUE)
 ls(env)
+#> [1] "__ToLower__" "__tOuPPER__"
 env$`__ToLower__`
+#> [1] "__tolower__"
 get("__tOuPPER__", env)
+#> [1] "__TOUPPER__"
 ```

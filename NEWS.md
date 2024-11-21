@@ -1,8 +1,18 @@
+<!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
+
+# bindr 0.1.1.9001
+
+## Feature
+
+- The call stack for a failure in an active binding now contains a reference to `bindr_fun()` instead of `fun()`, to hint at what might have went wrong.
+
+
 # bindr 0.1.1.9000
 
 # bindr 0.1.1 (2018-03-13)
 
 - Improve performance for very large environments for `create_env()` and `populate_env()`.
+
 - Force the `fun` argument just to be sure.
 
 

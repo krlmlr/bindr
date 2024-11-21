@@ -16,7 +16,7 @@ and \code{\link[=populate_env]{populate_env()}} for populating an existing envir
 Useful links:
 \itemize{
   \item \url{https://github.com/krlmlr/bindr}
-  \item \url{https://krlmlr.github.io/bindr}
+  \item \url{https://krlmlr.github.io/bindr/}
   \item Report bugs at \url{https://github.com/krlmlr/bindr/issues}
 }
 

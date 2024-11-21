@@ -10,7 +10,7 @@ Description: Provides a simple interface for creating active bindings where the
 Suggests: testthat
 Date: 2024-11-21
 BugReports: https://github.com/krlmlr/bindr/issues
-URL: https://github.com/krlmlr/bindr, https://krlmlr.github.io/bindr
+URL: https://github.com/krlmlr/bindr, https://krlmlr.github.io/bindr/
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2.9000
 License: MIT + file LICENSE

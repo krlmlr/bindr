@@ -16,13 +16,13 @@ and \code{\link[=populate_env]{populate_env()}} for populating an existing envir
 Useful links:
 \itemize{
   \item \url{https://github.com/krlmlr/bindr}
-  \item \url{https://krlmlr.github.io/bindr}
+  \item \url{https://krlmlr.github.io/bindr/}
   \item Report bugs at \url{https://github.com/krlmlr/bindr/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org} (\href{https://orcid.org/0000-0002-1416-3412}{ORCID})
+\strong{Maintainer}: Kirill Müller \email{kirill@cynkra.com} (\href{https://orcid.org/0000-0002-1416-3412}{ORCID})
 
 Other contributors:
 \itemize{

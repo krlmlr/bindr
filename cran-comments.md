@@ -1,12 +1,5 @@
-## Test environments
-* local ubuntu 17.10 install, R 3.4.3
-* ubuntu 12.04 (on travis-ci), R devel, release, and oldrel
-* win-builder (devel and release)
+bindr 0.1.1.9900
 
-## R CMD check results
+## Cran Repository Policy
 
-OK
-
-## Reverse dependencies
-
-Run checks successfully on bindrcpp, the only downstream dependencies.
+- [x] Reviewed CRP last edited 2024-08-27.

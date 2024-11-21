@@ -8,7 +8,6 @@ Authors@R: c(
 Description: Provides a simple interface for creating active bindings where the
     bound function accepts additional arguments.
 Suggests: testthat
-LazyData: true
 Date: 2024-11-21
 BugReports: https://github.com/krlmlr/bindr/issues
 URL: https://github.com/krlmlr/bindr, https://krlmlr.github.io/bindr

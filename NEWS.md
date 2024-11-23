@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9001 (2024-11-23)
+
+## fledge
+
+  - Bump version to 0.1.2.9000 (#12).
+
+
 # bindr 0.1.2.9000 (2024-11-22)
 
 ## Documentation

@@ -43,7 +43,7 @@ name: rcc
 
 jobs:
   rcc-smoke:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       sha: ${{ steps.commit.outputs.sha }}
       versions-matrix: ${{ steps.versions-matrix.outputs.matrix }}

@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9004 (2024-11-26)
+
+## Continuous integration
+
+- Use styler from main branch (#19).
+
+- Need to install R on Ubuntu 24.04 (#17).
+
+- Fix macOS (#16).
+
+- Use Ubuntu 24.04 and styler PR (#15).
+
+## fledge
+
+- Bump version to 0.1.2.9002 (#14).
+
+
 # bindr 0.1.2.9003 (2024-11-25)
 
 ## Continuous integration

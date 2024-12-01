@@ -1,5 +1,26 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9009 (2024-12-01)
+
+## Continuous integration
+
+- Ignore errors when removing pkg-config on macOS (#23).
+
+- Explicit permissions (#21).
+
+- Use styler from main branch (#19).
+
+- Need to install R on Ubuntu 24.04 (#17).
+
+- Fix macOS (#16).
+
+- Use Ubuntu 24.04 and styler PR (#15).
+
+## fledge
+
+- Bump version to 0.1.2.9002 (#14).
+
+
 # bindr 0.1.2.9008 (2024-11-30)
 
 ## Continuous integration

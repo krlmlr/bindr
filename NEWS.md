@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9010 (2024-12-07)
+
+## Continuous integration
+
+- Use larger retry count for lock-threads workflow (#28).
+
+
 # bindr 0.1.2.9009 (2024-12-01)
 
 ## Continuous integration

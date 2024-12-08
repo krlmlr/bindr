@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9011 (2024-12-08)
+
+## Continuous integration
+
+- Fetch tags for fledge workflow to avoid unnecessary NEWS entries (#30).
+
+
 # bindr 0.1.2.9010 (2024-12-07)
 
 ## Continuous integration

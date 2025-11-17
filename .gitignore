@@ -3,3 +3,4 @@
 .RData
 /README_cache/
 /docs
+*.tar.gz

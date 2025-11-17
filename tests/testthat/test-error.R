@@ -6,8 +6,9 @@ test_that("non-character raises error", {
 })
 
 test_that("non-native encoding causes warning", {
-  with_mock(
-    `bindr::to_symbol_encoding` = function(x) paste0(x, "-garbled"),
+  with_mocked_bindings(
+    to_symbol_encoding = function(x) paste0(x, "-garbled"),
+    .package = "bindr",
     expect_warning(create_env(letters[1:2], identity),
                    "a -> a-garbled, b -> b-garbled", fixed = TRUE)
   )

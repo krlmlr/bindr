@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9014 (2025-11-17)
+
+## Continuous integration
+
+- Install binaries from r-universe for dev workflow (#52).
+
+
 # bindr 0.1.2.9013 (2025-11-12)
 
 ## Chore

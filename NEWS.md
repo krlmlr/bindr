@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.2.9015 (2025-11-18)
+
+## Chore
+
+- Set up Copilot instructions following rigraph pattern (#55, #56).
+
+- Migrate from defunct `with_mock()` to `with_mocked_bindings()` (#45, #54).
+
+
 # bindr 0.1.2.9014 (2025-11-17)
 
 ## Continuous integration

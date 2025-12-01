@@ -1,4 +1,4 @@
-bindr 0.1.2
+bindr 0.1.3
 
 ## Cran Repository Policy
 

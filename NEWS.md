@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9000 (2025-12-02)
+
+## fledge
+
+- CRAN release v0.1.3 (#58).
+
+
 # bindr 0.1.3 (2025-12-01)
 
 ## Chore

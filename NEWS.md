@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9001 (2026-01-14)
+
+## Continuous integration
+
+- Fix comment (#62).
+
+- Tweaks (#61).
+
+- Test all R versions on branches that start with cran- (#60).
+
+
 # bindr 0.1.3.9000 (2025-12-02)
 
 ## fledge

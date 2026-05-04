@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9003 (2026-05-04)
+
+## Chore
+
+- Auto-update from GitHub Actions (#66).
+
+
 # bindr 0.1.3.9002 (2026-03-08)
 
 ## Chore

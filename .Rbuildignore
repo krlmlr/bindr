@@ -14,3 +14,4 @@
 ^revdep$
 ^index\.md$
 ^AGENTS\.md$
+^\.ccache$

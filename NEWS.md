@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9006 (2026-05-16)
+
+- Ci: Unify fledge.yaml across cynkratemplate and fledge (#86).
+
+
 # bindr 0.1.3.9005 (2026-05-14)
 
 ## Chore

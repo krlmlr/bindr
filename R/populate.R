@@ -1,14 +1,14 @@
 #' Create or populate an environment with parametrized active bindings
 #'
 #' Leverages [makeActiveBinding()][base::bindenv] by allowing parametrized functions
-#' that take the name of the binding and an arbitrary number of additional arguments.
+#'  that take the name of the binding and an arbitrary number of additional arguments.
 #'
 #' @param names A [name], or a list of names, or a character vector;
-#'   in the latter case the names are mangled if they are not representable in the native encoding
+#'  in the latter case the names are mangled if they are not representable in the native encoding
 #' @param fun A [function] with at least one argument, which will be called to compute the value of a binding.  The function will be called with the binding name as first argument (unnamed), and `...` as additional arguments
 #' @param ... Additional arguments to `fun`
 #' @param .envir The [environment] in which `fun` will be executed,
-#'   important if `fun` calls other functions that are not globally visible
+#'  important if `fun` calls other functions that are not globally visible
 #' @param .enclos The enclosing environment (`parent.env`) for the newly created environment
 #' @export
 #'

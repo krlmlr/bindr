@@ -17,8 +17,7 @@
 Active bindings in R are much like properties in other languages:
 They look like a variable,
 but querying or setting the value triggers a function call.
-They can be created in R via
-[`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv),
+They can be created in R via [`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv),
 but with this API the function used to compute or change the value of a binding cannot take additional arguments.
 The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name,
 and an arbitrary number of additional arguments.
@@ -35,8 +34,7 @@ pak::pak("krlmlr/bindr")
 ## Getting started
 
 For illustration, the `append_random()` function is used.
-This function appends a separator (a dash by default) and a random letter
-to its input, and talks about it, too.
+This function appends a separator (a dash by default) and a random letter to its input, and talks about it, too.
 
 ``` r
 set.seed(20161510)
@@ -53,8 +51,7 @@ append_random("X", sep = "+")
 #> [1] "X+k"
 ```
 
-In this example, we create an environment that contains bindings
-for all lowercase letters, which are evaluated with `append_random()`.
+In this example, we create an environment that contains bindings for all lowercase letters, which are evaluated with `append_random()`.
 As a result, a dash and a random letter are appended to the name of the binding:
 
 ``` r
@@ -180,11 +177,9 @@ populate_env(env4, letters, identity)
 
 Active bindings must be R functions.
 To interface with C++ code, one must bind against an exported Rcpp function, possibly with `rng = false` if performance matters.
-The [`bindrcpp`](https://github.com/krlmlr/bindrcpp#readme) package
-uses `bindr` to provide an easy-to-use C++ interface for parametrized active bindings,
+The [`bindrcpp`](https://github.com/krlmlr/bindrcpp#readme) package uses `bindr` to provide an easy-to-use C++ interface for parametrized active bindings,
 and is the recommended way to interface with C++ code.
-In the remainder of this section,
-an alternative using an exported C++ function is shown.
+In the remainder of this section, an alternative using an exported C++ function is shown.
 
 The following C++ module exports a function `change_case(to_upper = FALSE)`,
 which is bound against in R code later.

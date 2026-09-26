@@ -57,8 +57,8 @@ and an arbitrary number of additional arguments.
 You can install `bindr` from GitHub with:
 
 ```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("krlmlr/bindr")
+# install.packages("pak")
+pak::pak("krlmlr/bindr")
 ```
 
 

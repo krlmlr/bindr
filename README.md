@@ -29,8 +29,8 @@ arguments.
 You can install `bindr` from GitHub with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("krlmlr/bindr")
+# install.packages("pak")
+pak::pak("krlmlr/bindr")
 ```
 
 ## Getting started

@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9018 (2026-09-26)
+
+## Documentation
+
+- Break lines at meaning boundaries (#91).
+
+- Point the coverage badge at the branch that exists (#88).
+
+- Harmonize README and pkgdown front page rendering (#89).
+
+- Use `pak::pak()` for the development install (#86).
+
+
 # bindr 0.1.3.9017 (2026-09-13)
 
 ## Chore

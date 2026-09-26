@@ -10,12 +10,12 @@ create_env(names, fun, ..., .envir = parent.frame(), .enclos = parent.frame())
 populate_env(env, names, fun, ..., .envir = parent.frame())
 }
 \arguments{
-\item{names}{A \link{name}, or a list of names, or a character vector; in the latter case
-the names are mangled if they are not representable in the native encoding}
+\item{names}{A \link{name}, or a list of names, or a character vector;
+in the latter case the names are mangled if they are not representable in the native encoding}
 
-\item{fun}{A \link{function} with at least one argument, which will be called
-to compute the value of a binding.  The function will be called with the
-binding name as first argument (unnamed), and \code{...} as additional arguments}
+\item{fun}{A \link{function} with at least one argument, which will be called to compute the value of a binding.
+The function will be called with the binding name as first argument (unnamed),
+and \code{...} as additional arguments}
 
 \item{...}{Additional arguments to \code{fun}}
 
@@ -27,8 +27,7 @@ important if \code{fun} calls other functions that are not globally visible}
 \item{env}{An environment}
 }
 \description{
-Leverages \link[base:bindenv]{makeActiveBinding()}
-by allowing parametrized functions
+Leverages \link[base:bindenv]{makeActiveBinding()} by allowing parametrized functions
 that take the name of the binding and an arbitrary number of additional arguments.
 }
 \examples{

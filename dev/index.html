@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">bindr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9016</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.3.9017</span>
       </span>
     </div>
 
@@ -76,8 +76,8 @@
 </h2>
 <p>You can install <code>bindr</code> from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"krlmlr/bindr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"krlmlr/bindr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -184,9 +184,11 @@
 <p>All bindings are read-only:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">env3</span><span class="op">$</span><span class="va">a</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span><span class="co">#&gt; Error: Binding is read-only.</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Binding is read-only.</span></span>
 <span><span class="va">env3</span><span class="op">$</span><span class="va">a</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span><span class="co">#&gt; Error: Binding is read-only.</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Binding is read-only.</span></span></code></pre></div>
 <p>Existing variables or bindings are not overwritten:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">env4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.environment.html" class="external-link">as.environment</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
@@ -194,7 +196,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls</a></span><span class="op">(</span><span class="va">env4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "a" "b"</span></span>
 <span><span class="fu"><a href="reference/create_env.html">populate_env</a></span><span class="op">(</span><span class="va">env4</span>, <span class="va">letters</span>, <span class="va">identity</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: b, a</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `populate_env()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> Not creating bindings for existing variables: b, a</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="active-bindings-and-c">Active bindings and C++<a class="anchor" aria-label="anchor" href="#active-bindings-and-c"></a>
@@ -269,7 +272,7 @@
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://github.com/krlmlr/bindr/actions" class="external-link"><img src="https://github.com/krlmlr/bindr/workflows/rcc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://app.codecov.io/github/krlmlr/bindr?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://app.codecov.io/gh/krlmlr/bindr/tree/main" class="external-link"><img src="https://codecov.io/gh/krlmlr/bindr/graph/badge.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=bindr" class="external-link"><img src="https://www.r-pkg.org/badges/version/bindr" alt="CRAN_Status_Badge"></a></li>
 </ul>
 </div>

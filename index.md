@@ -11,7 +11,8 @@
 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R build status](https://github.com/krlmlr/bindr/workflows/rcc/badge.svg)](https://github.com/krlmlr/bindr/actions)
-[![Coverage Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://app.codecov.io/github/krlmlr/bindr?branch=master) [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/bindr)](https://cran.r-project.org/package=bindr)
+[![Coverage Status](https://codecov.io/gh/krlmlr/bindr/graph/badge.svg)](https://app.codecov.io/gh/krlmlr/bindr/tree/main)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/bindr)](https://cran.r-project.org/package=bindr)
 <!-- badges: end -->
 
 Active bindings in R are much like properties in other languages:

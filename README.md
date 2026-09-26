@@ -1,28 +1,26 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md and index.md are generated from README.Rmd.
+     Edit that file and render it the usual way: rmarkdown::render(),
+     devtools::build_readme(), or the Knit button. The cynkratemplate
+     package must be installed; it supplies the output format. -->
 
 # bindr
 
 <!-- badges: start -->
 
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![R build
-status](https://github.com/krlmlr/bindr/workflows/rcc/badge.svg)](https://github.com/krlmlr/bindr/actions)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://app.codecov.io/github/krlmlr/bindr?branch=master)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/bindr)](https://cran.r-project.org/package=bindr)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![R build status](https://github.com/krlmlr/bindr/workflows/rcc/badge.svg)](https://github.com/krlmlr/bindr/actions)
+[![Coverage Status](https://img.shields.io/codecov/c/github/krlmlr/bindr/master.svg)](https://app.codecov.io/github/krlmlr/bindr?branch=master) [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/bindr)](https://cran.r-project.org/package=bindr)
 <!-- badges: end -->
 
-Active bindings in R are much like properties in other languages: They
-look like a variable, but querying or setting the value triggers a
-function call. They can be created in R via
+Active bindings in R are much like properties in other languages:
+They look like a variable,
+but querying or setting the value triggers a function call.
+They can be created in R via
 [`makeActiveBinding()`](https://www.rdocumentation.org/packages/base/versions/3.3.1/topics/bindenv),
-but with this API the function used to compute or change the value of a
-binding cannot take additional arguments. The `bindr` package faciliates
-the creation of active bindings that are linked to a function that
-receives the binding name, and an arbitrary number of additional
-arguments.
+but with this API the function used to compute or change the value of a binding cannot take additional arguments.
+The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name,
+and an arbitrary number of additional arguments.
 
 ## Installation
 
@@ -35,9 +33,9 @@ pak::pak("krlmlr/bindr")
 
 ## Getting started
 
-For illustration, the `append_random()` function is used. This function
-appends a separator (a dash by default) and a random letter to its
-input, and talks about it, too.
+For illustration, the `append_random()` function is used.
+This function appends a separator (a dash by default) and a random letter
+to its input, and talks about it, too.
 
 ``` r
 set.seed(20161510)
@@ -54,10 +52,9 @@ append_random("X", sep = "+")
 #> [1] "X+k"
 ```
 
-In this example, we create an environment that contains bindings for all
-lowercase letters, which are evaluated with `append_random()`. As a
-result, a dash and a random letter are appended to the name of the
-binding:
+In this example, we create an environment that contains bindings
+for all lowercase letters, which are evaluated with `append_random()`.
+As a result, a dash and a random letter are appended to the name of the binding:
 
 ``` r
 library(bindr)
@@ -159,9 +156,11 @@ All bindings are read-only:
 
 ``` r
 env3$a <- NA
-#> Error: Binding is read-only.
+#> Error:
+#> ! Binding is read-only.
 env3$a <- NULL
-#> Error: Binding is read-only.
+#> Error:
+#> ! Binding is read-only.
 ```
 
 Existing variables or bindings are not overwritten:
@@ -172,22 +171,22 @@ populate_env(env4, list(quote(b)), identity)
 ls(env4)
 #> [1] "a" "b"
 populate_env(env4, letters, identity)
-#> Error in populate_env(env4, letters, identity): Not creating bindings for existing variables: b, a
+#> Error in `populate_env()`:
+#> ! Not creating bindings for existing variables: b, a
 ```
 
 ## Active bindings and C++
 
-Active bindings must be R functions. To interface with C++ code, one
-must bind against an exported Rcpp function, possibly with `rng = false`
-if performance matters. The
-[`bindrcpp`](https://github.com/krlmlr/bindrcpp#readme) package uses
-`bindr` to provide an easy-to-use C++ interface for parametrized active
-bindings, and is the recommended way to interface with C++ code. In the
-remainder of this section, an alternative using an exported C++ function
-is shown.
+Active bindings must be R functions.
+To interface with C++ code, one must bind against an exported Rcpp function, possibly with `rng = false` if performance matters.
+The [`bindrcpp`](https://github.com/krlmlr/bindrcpp#readme) package
+uses `bindr` to provide an easy-to-use C++ interface for parametrized active bindings,
+and is the recommended way to interface with C++ code.
+In the remainder of this section,
+an alternative using an exported C++ function is shown.
 
-The following C++ module exports a function
-`change_case(to_upper = FALSE)`, which is bound against in R code later.
+The following C++ module exports a function `change_case(to_upper = FALSE)`,
+which is bound against in R code later.
 
 ``` cpp
 #include <Rcpp.h>

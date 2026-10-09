@@ -22,6 +22,27 @@ but with this API the function used to compute or change the value of a binding 
 The `bindr` package faciliates the creation of active bindings that are linked to a function that receives the binding name,
 and an arbitrary number of additional arguments.
 
+## Goals and non-goals
+
+bindr aims to:
+
+- Add exactly one thing to `makeActiveBinding()`:
+  the bound function receives the name of the binding, plus any further arguments, named or unnamed.
+- Fill a fresh environment with such bindings through `create_env()`, or add them to an existing one through `populate_env()`.
+- Leave the caller in control of the surroundings:
+  `.envir` says where the binding function is evaluated, `.enclos` becomes the parent of the new environment.
+- Cost nothing to depend on: base R only, no imports and no compiled code.
+
+It is explicitly not trying to:
+
+- Create writable bindings.
+  Assigning to one raises an error, since a binding computes a value rather than storing one.
+- Replace what is already there.
+  `populate_env()` stops instead of shadowing a variable or binding that the target environment already has.
+- Reach into C++ itself.
+  The bound function has to be an R function, and bindrcpp builds the C++ interface on top of bindr.
+- Grow past the two functions it has exported since the first release; the package is marked stable.
+
 ## Installation
 
 You can install `bindr` from GitHub with:

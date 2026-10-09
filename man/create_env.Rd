@@ -14,7 +14,7 @@ populate_env(env, names, fun, ..., .envir = parent.frame())
 in the latter case the names are mangled if they are not representable in the native encoding}
 
 \item{fun}{A \link{function} with at least one argument, which will be called to compute the value of a binding.
-The function will be called with the binding name as first argument (unnamed),
+ The function will be called with the binding name as first argument (unnamed),
 and \code{...} as additional arguments}
 
 \item{...}{Additional arguments to \code{fun}}

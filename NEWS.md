@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9021 (2026-10-10)
+
+## Chore
+
+- Auto-update from GitHub Actions (#98).
+
+
 # bindr 0.1.3.9020 (2026-09-27)
 
 ## Continuous integration

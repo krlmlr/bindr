@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# bindr 0.1.3.9022 (2026-11-27)
+
+## Continuous integration
+
+- Sync the workflows with cynkra/cynkratemplate (#100).
+
+
 # bindr 0.1.3.9021 (2026-10-10)
 
 ## Chore
